@@ -1,5 +1,5 @@
 #!/bin/bash
-declare pw="pass"
+declare passwd="pass"
 declare port="80"
 declare cert="true"
 read -p "Go to https://github.com/cdr/code-server/releases and copy the name of the version (ex.1.9xx-vscx.xx.x): " link
@@ -25,9 +25,9 @@ fi
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install openssl wget -y
 
-mkdir $HOME/code-server
-mkdir $HOME/code-server/certs
-mkdir $HOME/Projects
+mkdir "$HOME"/code-server
+mkdir "$HOME"/code-server/certs
+mkdir "$HOME"/Projects
 wget -qO- "https://github.com/cdr/code-server/releases/download/$link/code-server$link-linux-x64.tar.gz" | tar xvz -C ~/code-server
 if [ "$cert" == "true" ]
 then
@@ -37,10 +37,10 @@ then
 else
 	echo "PASSWORD=$passwd $HOME/code-server/code-server Projects -p $port --allow-http --disable-telemetry " >> ~/code-server/run.sh
 fi
-mv $HOME/code-server/code-server$link-linux-x64/code-server $HOME/code-server/code-server
-rm $HOME/code-server/code-server$link-linux-x64 -r
-chmod +x $HOME/code-server/run.sh
+mv "$HOME"/code-server/code-server"$link"-linux-x64/code-server "$HOME"/code-server/code-server
+rm "$HOME"/code-server/code-server"$link"-linux-x64 -r
+chmod +x "$HOME"/code-server/run.sh
 export PASSWORD="$passwd"
-ln $HOME/code-server/run.sh /bin/code-server
+ln "$HOME"/code-server/run.sh /bin/code-server
 echo "Installed successfully, use command code-server to run "
 
