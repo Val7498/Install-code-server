@@ -2,8 +2,7 @@
 ___
 
 ### Run Script:
-
-```wget -O - https://raw.githubusercontent.com/Val7498/Install-code-server/master/script.sh | bash```
+```bash <(wget -qO- https://raw.githubusercontent.com/Val7498/Install-code-server/master/script.sh)```
 
 ### Notes:
 
